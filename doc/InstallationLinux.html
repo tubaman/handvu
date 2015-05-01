@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>HandVu Installation on Linux</title>
+
+    <style type="text/css">
+      body
+      {color: black;
+       font-family: sans-serif;
+       font-weight: normal
+      }
+      h1
+      {color: black
+      }
+      A:link, A:visited
+      {text-decoration: none;
+       color: blue;
+      }
+      A:hover { background: yellow }
+    </style>
+
+</head>
+
+  <body>
+    <table width="100%" bgcolor="black">
+        <tr><td rowspan="3" width="120" align="center" valign="top">
+            <img border="0" width="80" src="HandVu_Icon_green.jpg">
+            </img>
+            
+          </td><td align="right">
+            <b><font color="yellow">the</font></b>
+          </td>
+        </tr><tr><td><td align="left">
+            <h1><font color="yellow">HandVu</font></h1>
+          </td>
+        </tr><tr><td colspan="2">
+            <b><font color="yellow">vision-based hand gesture interface</font></b>
+        </tr>
+    </table>
+
+    <b>
+    <a href="http://www.cs.ucsb.edu/~matz/HGI/HandVu.html">homepage</a> |
+    <a href="index.html">index</a> |
+    <a href="#requirements">requirements</a> |
+    <a href="#source">source</a>
+    </b>
+
+    <a name="overview">
+    <h2>Installation on Linux</h2>
+
+    There is currently no binary distribution for Linux or cygwin, so
+    you have to compile HandVu on your system.  That's much better,
+    anyway.
+    
+    <a name="requirements">
+    <h2>Requirements</h2>
+
+    <ul>
+      <li>Linux (tested with Redhat 9.0 on 2.4.20-8 kernel and on
+      Fedora2 on 2.6.9-1.11 and 2.6.10 kernels, all with dc1394
+      firewire interface),
+
+      <li>a 1.5 GHz or faster CPU (performance increases superlinearly
+      with a faster CPU),
+        
+      <li><a
+      href="http://sourceforge.net/projects/opencvlibrary/">OpenCV</a>,
+
+      <li>a camera with 320x240 or greater resolution; either
+      firewire, USB, or other frame grabber, that works with the
+      OpenCV demos or with ARToolKit.
+
+      <li>only for the ARToolKit demo: the <a
+      href="http://www.hitl.washington.edu/artoolkit/">ARToolKit
+      2.61</a>, OpenGL, <a
+      href="http://www.opengl.org/resources/libraries/glut.html">GLUT</a>,
+      and <a href="http://www.libsdl.org">SDL</a>.
+        
+    </ul>
+
+    <a name="source">
+    <h3>Source package</h3>
+
+    <ul>
+      <li>Get all the <a href="#requirements">required packages</a>
+      and install them in their default locations.
+
+      <li>Unpack the archive into a directory of your choice and cd
+      into it.  Type<br>
+        ./configure<br>
+        make<br>
+        (make install doesn't do much at the moment)<br>
+
+      <li>Options to the configure process are:<br>
+  --without-artk          do not attempt to build hv_ARtk demo [build it]
+        <br>
+  --without-opencv        do not even use OpenCV for file i/o [use OpenCV]
+        <br>
+  --with-magick           use ImageMagick=abspath for file i/o [use OpenCV]
+        <br>
+  --with-type=type        IntegralImage types: [float], uint
+
+    </ul>
+
+    <h3>Troubleshooting and Tips</h3>
+
+    <ul>
+
+      <li>ARToolKit might not compile due to libdc1394 compatibility
+      issues.  This patch, courtesy of Steve DiVerdi, might help the
+      situation: <a href="video.c.patch">video.c.patch</a>, to be
+      applied to ARToolKit2.61/lib/SRC/VideoLinux1394Cam/video.c with
+      the command "patch < video.c.patch".
+
+      <li>Note that paths for ./configure --with must be absolute (no
+      ~tilde).
+
+    </ul>
+
+    <p>
+    
+  </body>
+</html>

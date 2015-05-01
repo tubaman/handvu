@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>HandVu Application Documentation</title>
+
+    <style type="text/css">
+      body
+      {color: black;
+       font-family: sans-serif;
+       font-weight: normal
+      }
+      h1
+      {color: black
+      }
+      A:link, A:visited
+      {text-decoration: none;
+       color: blue;
+      }
+      A:hover { background: yellow }
+    </style>
+
+  </head>
+
+  <body>
+
+    <table width="100%" bgcolor="black">
+        <tr><td rowspan="3" width="120" align="center" valign="top">
+            <img border="0" width="80" src="HandVu_Icon_green.jpg">
+            </img>
+            
+          </td><td align="right">
+            <b><font color="yellow">the</font></b>
+          </td>
+        </tr><tr><td><td align="left">
+            <h1><font color="yellow">HandVu</font></h1>
+          </td>
+        </tr><tr><td colspan="2">
+            <b><font color="yellow">vision-based hand gesture interface</font></b>
+        </tr>
+    </table>
+
+    <b>
+    <a href="http://www.cs.ucsb.edu/~matz/HGI/HandVu.html">homepage</a> |
+    <a href="index.html">index</a> |
+    <a href="#basics">basics</a> |
+    <a href="#common">common</a> |
+    <a href="#artk">ARtk demo</a> |
+    <a href="#trouble">troubleshooting</a>
+    </b>
+
+    <h2>HandVu Application Documentation</h2>
+    
+    This document assumes that you have successfully installed HandVu
+    and at least one of the sample applications on your system.  Please
+    read at least the basics and common functionality.  While
+    a lot of functionality is common to all sample applications, some
+    key shortcuts do not work in all applications, indicated with a
+    (*).
+
+    <a name="basics">
+    <h2>Basics: Setup and Hand Postures</h2>
+    
+    <h4>Camera:</h4>
+
+    HandVu is designed for a camera that views the space in front of a
+    sitting or standing person from a top-down view.  The camera can
+    be ceiling-mounted or head-worn.  It should deliver at least a
+    320x240 resolution.
+    
+    <h4>Hand detection:</h4>
+
+    The hand is detected only in a standard posture and orientaentirelytion
+    with respect to the camera, called the <i>closed</i> posture: <a
+    href="HandVu_Postures.pdf">recognized postures</a>.  This is
+    necessary to avoid inadvertent gesture commands and to speed the
+    image processing.
+
+    <h4>Hand tracking:</h4>
+
+    Once the hand has been detected, you can move the hand around in
+    any posture.  The better the lighting conditions are (uniform
+    without harsh shadows) and the less brightness variation exists in
+    the background, the better tracking will work.  Avoid all too rapid
+    movements or quick posture changes if you experience problems.
+
+    <h4>Posture recognition:</h4>
+
+    All of the six <a href="HandVu_Postures.pdf">recognized
+    postures</a> can be performed at any time during tracking and they
+    will be recognized.  Note that all postures are to be performed in
+    a plane parallel to the imaging plane, facing upwards in the
+    image, and with no more than 15 degrees counter-clockwise rotation
+    (to the left).  You will have to practice the gestures a few times
+    until you achieve a good recognition rate.
+
+
+    <a name="common">
+    <h2>Common Functionality</h2>
+
+    <h4>GestureServer</h4>
+
+    A "GestureServer" is automatically started in the current version.
+    It accepts TCP/IP connections on port 7045 and returns
+    GestureEvents in ASCII format.  To see the recognition results,
+    connect to the Server at port 7045 with an ordinary telnet
+    session. (For example, go to Start->Run... and type "telnet
+    localhost 7045")<br>
+    
+    If of interest, please read the more detailed description of the
+    <a href="GestureEventFormat.pdf">GestureEvent format</a>.  The OSC
+    server will be back in the next release or earlier if you beg me.
+
+    <h4>VisionConductor:</h4>
+
+    Most of the settings of HandVu can be controlled with a
+    configuration file, called a VisionConductor.  Please see the
+    following document for details: <a
+    href="VisionConductor.pdf">VisionConductor file format</a>.
+    
+    <h4>Verbosity Level:</h4>
+
+    The key shortcuts 0,1,2,3 select different verbosity levels.  If
+    you are experiencing trouble with the recognition, please select
+    level 3.  The white rectangle is the initial detection area.  The
+    <i>closed</i> posture has to be performed entirely within these
+    bounds.  The minimum and maximum sizes of the hand are indicated
+    by the blue rectangles.
+    <br>
+    Shown in some of the verbosity levels are: a white rectangle in
+    which the initial posture is recognized, the color segmentation
+    and KLT feature locations during tracking, and discrete,
+    recognized posture locations (green rectangles) together with the
+    foreground color probability.
+
+    <h4>Restart Detection</h4>
+
+    Pressing "r" restarts the detection in the initial area.
+    
+    <h4>Software Exposure</h4> (*)
+    
+    If your hand is overexposed a lot, enable the auto exposure option
+    by pressing "e".  The exposure will be adjusted automatically
+    within the recognition area.  This will only work on cameras whose
+    drivers export a standard control interface.
+
+    <h4>Miscellaneous</h4> (*)
+    
+    F11 or "f" toggles between windowed and full-screen mode.<br>
+    
+    Pressing "t" takes a snapshot and saves it in a folder called "hv_pics".
+    <br>
+    
+    Distortion correction for several camera lenses can be turned on
+    with "u", using the calibration file set in the conductor.<br>
+
+
+
+
+    <a name="artk">
+    <h2>HandVu Demo for ARToolKit</h2>
+
+    This little demo lets you play with virtual objects in an
+    augmented-reality environment.  A <a
+    href="../hv_ARtk/data/ARmulti.pdf">multi marker</a> is the anchor
+    point for a bunch of objects which can both be manipulated with
+    hand gestures.  Hold the multi-maker with your left hand at the
+    larger grey section and don't obstruct the symbols with the right
+    hand.<br>
+    
+    As with all applications, the "closed" posture is the only one
+    possible for initialization.  "Lback" is used to select for
+    dragging.  "Lpalm" is used to select for rotation.  "open" ends
+    either of these operations.  "sidepoint" changes the color of the
+    object under the cursor once a second.  (this might happen during
+    wrong recognitions as well...)
+
+Command line flags:
+<pre>
+--snapshots     - take a snapshot of the scanned area without any OpenGL
+                   renderings, at most twice a second, and store them
+                   in $HOME/hv_pics (will be created)
+--fullsnaps     - instead of infrequent, small snapshots, this switch
+                   makes it take a full frame shot every frame, after
+                   all OpenGL rendering
+--pointerdist   - from tracked hand position to grabbing location, in 
+                   screen pixel units
+--fixedworld    - start in "fixed world" setup, which means: multiMarker
+                   is used to control a single object (another teapot),
+                   while the other two, formerly anchor-controlled, 
+                   objects stay where they are
+--threshold     - ARtk threshold
+</pre>
+
+Runtime key shortcuts.
+<pre>
+m    - toggle show markers [default: on]
+e    - exposure control by HandVu software, vs camera auto exposure;
+         use when the hand is too bright.
+         [default set in the ARtk.conductor file]
+f    - toggle fixed world (basically, what the multiMarker is used for)
+w    - reset world: two objects in fixed locations, the third one only 
+         visible if the multiMarker is there and fixedworld is off
+s    - toggle take snapshots (fullsize mode as selected at command line);
+         no snapshots are taken if an overlay level>0 is selected
++/-  - increase, decrease ARtk threshold  ("=" works as +, too)
+
+0-3  - HandVu overlay level; note that no snapshots will be taken 
+         regardless of the setting if an overlay level>0 is selected
+         (that's a feature: otherwise, the images are cluttered with
+         debugging output)
+</pre>    
+
+      
+
+    <a name="trouble">
+    <h2>Troubleshooting & Tips</h2>
+    <ul>
+      <li>A brief disclaimer: recognizing hand gestures is a difficult
+      matter, and HandVu is by no means perfect at it.  You will find
+      cases and occasions when it does not work as expected, and it is
+      pretty easy to fool deliberately.  Once you got to know its
+      limitations, however, you will find it easy and intuitive to
+      use.
+        
+      <li>Some cameras do not expose a standard interface to control
+      the exposure so that HandVu can not automatically choose the
+      right level. If the hand is over-exposed and mostly white, the
+      detection and recognition are likely to fail. Adjust the camera
+      parameters through some other control interface such that the
+      specularities on the hand are minimized.
+
+      <li>If no camera is found, or the camera driver does not expose
+      a DirectShow source filter, DXApp gives the option of opening a
+      file and processing file input instead of live video.
+
+      <li>If at runtime the file "default.conductor" is requested and
+      not found, use DXApp's option "-c=pathfile" to the respective
+      file.
+
+      <li>If the camera image is very dark, select the camera exposure
+      in the VisionConductor file.  Reason being that on some cameras
+      the gain does not remain at its last setting when the
+      auto-exposure is turned off.
+
+      <li>Tracking gets better with higher frame rates, and/or slower
+      hand motion.
+
+      <li>For difficult backgrounds (hard contrast, skin-colored
+      areas...) it also helps to keep the hand in a fairly static
+      posture during large movements.  Better still, or in addition,
+      if one of the postures is performed during movement, repeated
+      recognition will re-initialize the Flock of Features on
+      known-good locations.
+
+      <li>If the background contains no skin color and is fairly
+      static, and very rapid movements are desired, CAMSHIFT_LEARNED
+      can be selected as the tracking method in the VisionConductor.
+
+      <li>Try to avoid very hard contrast in the background - the
+      tracking will get off more frequently, and recognition rates
+      might suffer.
+
+      <li>On some platforms, hvOpenCV pops up with a tiny camera
+      window (less than 320x240).  HandVu won't work with that -
+      please use one of the other camera capture interfaces.
+
+    </ul>
+
+    
+    <p>
+
+  </body>
+</html>

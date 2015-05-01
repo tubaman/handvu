@@ -1,0 +1,43 @@
+#the number of patterns to be recognized
+1
+
+#pattern 1
+data/patt.Q
+83.0
+0.0 0.0
+
+#pattern 2
+data/patt.arrow
+112.0
+0.0 0.0
+
+#pattern 3
+data/patt.tbars
+112.0
+0.0 0.0
+
+#pattern 4
+data/patt.idot
+112.0
+0.0 0.0
+
+#pattern 5
+data/patt.swisscheese
+112.0
+0.0 0.0
+
+#pattern 6
+data/patt.tbars
+112.0
+0.0 0.0
+
+#pattern 7
+data/patt.tetris
+112.0
+0.0 0.0
+
+#pattern 8
+data/patt.flagdot
+112.0
+0.0 0.0
+

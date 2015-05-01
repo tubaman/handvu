@@ -1,0 +1,75 @@
+--- video.c.orig	2005-03-07 16:11:11.558649856 -0800
++++ video.c	2005-03-07 16:15:01.402708248 -0800
+@@ -120,6 +120,8 @@
+     AR2VideoParamT            *vid;
+     ARUint32                  p1,p2;
+     quadlet_t                 value;
++    struct stat               statbuf; /* sjd */
++    char                      videodev[256]; /*sjd*/
+     char                      *a, line[256];
+     int                       i;
+ 
+@@ -303,6 +305,19 @@
+         exit(0);
+     }
+ 
++/*
++ * sjd - check for /dev/video1394/0 or /dev/video1394 and select 
++ * dynamically, for better compatibility
++ */
++    if( stat( "/dev/video1394/0", &statbuf ) == 0 ) {
++        sprintf( videodev, "/dev/video1394/0" );
++    } else if( stat( "/dev/video1394", &statbuf ) == 0 ) {
++        sprintf( videodev, "/dev/video1394" );
++    } else {
++      fprintf( stderr, "unable to find / access video1394 camera device\n" );
++      exit(0);
++    }
++
+     /*-----------------------------------------------------------------------*/
+     /*  setup capture                                                        */
+     /*-----------------------------------------------------------------------*/
+@@ -314,6 +329,7 @@
+ 			         vid->speed,
+ 			         vid->int_rate,
+ 			         vid->dma_buf_num,
++				 1 /* drop frames*/, videodev, /* sjd*/
+ 			         &(vid->camera)) != DC1394_SUCCESS ) {
+         fprintf( stderr,"unable to setup camera-\n"
+                 "check if you did 'insmod video1394' or,\n"
+@@ -363,11 +379,27 @@
+ 
+ int ar2VideoCapStart( AR2VideoParamT *vid )
+ {
++  struct stat statbuf;   /* sjd */
++  char videodev[256];  /* sjd */
++
+     if(vid->status != 0 && vid->status != 3){
+         printf("arVideoCapStart has already been called.\n");
+         return -1;
+     }
+ 
++/*
++ * sjd - check for /dev/video1394/0 or /dev/video1394 and select 
++ * dynamically, for better compatibility
++ */
++    if( stat( "/dev/video1394/0", &statbuf ) == 0 ) {
++        sprintf( videodev, "/dev/video1394/0" );
++    } else if( stat( "/dev/video1394", &statbuf ) == 0 ) {
++        sprintf( videodev, "/dev/video1394" );
++    } else {
++      fprintf( stderr, "unable to find / access video1394 camera device\n" );
++      exit(0);
++    }
++
+     /*-----------------------------------------------------------------------*/
+     /*  setup capture                                                        */
+     /*-----------------------------------------------------------------------*/
+@@ -380,6 +412,7 @@
+ 			             vid->speed,
+ 			             vid->int_rate,
+ 			             vid->dma_buf_num,
++				     1 /* drop frames*/, videodev, /*sjd*/
+ 			             &(vid->camera)) != DC1394_SUCCESS ) {
+             fprintf( stderr,"unable to setup camera-\n"
+                     "check if you did 'insmod video1394' or,\n"

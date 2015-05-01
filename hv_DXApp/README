@@ -1,0 +1,63 @@
+HandVu
+
+This is a software package that implements a vision-based hand
+gesture recognition user interface. For more information on
+installing and running the program, see
+http://www.cs.ucsb.edu/~matz
+
+Matz matz@cs.ucsb.edu
+
+
+
+Key shortcuts:
+
+u undistortion
+x memory-mapped file output only (no display)
+f fullscreen (also F11)
+r restart
+0-3 overlay levels
+c load conductor
+l recompute incoming latency
+s toggle source window
+t take a snapshot
+
+Shortcuts for add-ons (not in distribution)
+Ctrl-1  HandVu1 study
+Ctrl-2  HandVu2 study
+.       abort HV1 session
+,       abort HV1 task
+m maintenance app
+
+
+Status:
+4/21/2004
+alpha3 version packaged.
+
+1/13/2004
+alpha1 version packaged.
+
+10/11/2003
+You probably got the executable distribution. Run the install.bat file.
+If you get error messages such as DllRegisterServer failed, error code
+0x80070005, you don't have admin rights on your machine. You need them
+for installation.
+
+6/24/2002
+Started with graphical method for selecting image regions and saving
+them to individual bitmap files. Integration matrices are also generated,
+and a stub for training the template-based classifiers is there. The
+Doc/View architecture is based on "ITTS" files: training sets consisting
+of a set of images (duplicates possible) with one square area in each.
+Matz.
+
+
+
+---------------
+
+list of features to come:
+
+command line option -verbose=0..4
+command line option -logfile=filename
+AfxMessageBox for unsuccessful Undistortion and Autoexposure
+access to camera's and source pin's property pages
+some way to set GestureServer port and OSC destination

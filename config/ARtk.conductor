@@ -1,0 +1,46 @@
+#
+# standard settings - fast detection
+#
+HandVu VisionConductor file, version 1.5
+
+camera calibration: -
+#camera calibration: FireFly4mm_calib.txt
+
+camera exposure: camera
+#camera exposure: software
+
+# duration is in milliseconds
+detection params: coverage 0.0, duration 0, radius .02
+
+tracking params: num_f 50, min_f 5, win_w 11, win_h 11, min_dist 3.0, max_err 1150
+#tracking style: OPTICAL_FLOW_ONLY
+#tracking style: OPTICAL_FLOW_COLOR
+#tracking style: OPTICAL_FLOW_FLOCK
+tracking style: OPTICAL_FLOW_COLORFLOCK
+#tracking style: CAMSHIFT_HSV
+#tracking style: CAMSHIFT_LEARNED
+
+recognition params: max_scan_width 0.4, max_scan_height 0.6
+
+1 detection cascades
+all_extended_0_5_10_15_closed_30x20.cascade
+area: left 0.3, top .2, right 0.70, bottom .84
+params scaling: start 1.5, stop 5.0, inc_factor 1.2
+params misc: translation_inc_x 2, translation_inc_y 3, post_process 1
+
+0 tracking cascades
+
+1 recognition cascades
+all_hands_combined.cascade
+area: left 0.47, top .15, right 0.94, bottom .6
+params scaling: start 3.0, stop 5.0, inc_factor 1.1
+params misc: translation_inc_x 2, translation_inc_y 3, post_process 0
+
+7 masks
+Lpalm.mask
+Lback.mask
+sidepoint.mask
+closed.mask
+open.mask
+victory.mask
+all_extended_0_5_10_15_closed_30x20.mask

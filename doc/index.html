@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>HandVu Documentation Index</title>
+
+    <style type="text/css">
+      body
+      {color: black;
+       font-family: sans-serif;
+       font-weight: normal
+      }
+      h1
+      {color: black
+      }
+      A:link, A:visited
+      {text-decoration: none;
+       color: blue;
+      }
+      A:hover { background: yellow }
+    </style>
+
+</head>
+
+  <body>
+    <table width="100%" bgcolor="black">
+        <tr><td rowspan="3" width="120" align="center" valign="top">
+            <img border="0" width="80" src="HandVu_Icon_green.jpg">
+            </img>
+            
+          </td><td align="right">
+            <b><font color="yellow">the</font></b>
+          </td>
+        </tr><tr><td><td align="left">
+            <h1><font color="yellow">HandVu</font></h1>
+          </td>
+        </tr><tr><td colspan="2">
+            <b><font color="yellow">vision-based hand gesture interface</font></b>
+        </tr>
+    </table>
+
+    <b>
+    <a href="http://www.cs.ucsb.edu/~matz/HGI/HandVu.html">homepage</a> |
+    <a href="#overview">overview</a> |
+    <a href="#installation">installation</a> |
+    <a href="#documentation">documentation</a>
+    </b>
+
+    <a name="overview">
+    <h2>Overview</h2>
+    
+    This software collection implements a vision-based hand gesture
+    interface.  Called <b>HandVu</b>, it detects the hand in a
+    standard posture, then tracks it and recognizes key postures - all
+    in real-time and without the need for camera or user calibration.
+    The software package consists of the main HandVu library and
+    several applications that demonstrate video capture with OpenCV's
+    highgui, DirectShow, and the ARtoolkit.  If your application
+    includes video processing, you would just make a few library calls
+    and hand gesture recognition results will be available to you.  If
+    your application does not use camera input already, you can run
+    one of the sample programs and interface to your application with
+    a networking interface.
+
+    <p>This page links to installation and usage documentation.
+    Please check the <a
+    href="http://www.cs.ucsb.edu/~matz/HGI/HandVu.html">HandVu
+    homepage</a> for updates, and use the Yahoo <a
+    href="http://groups.yahoo.com/group/handvu/">HandVu Group</a> for
+    discussion of problems and positive experiences ;)
+
+
+    <a name="installation">
+    <h2>Installation</h2>
+
+    All versions require the <a
+    href="http://sourceforge.net/projects/opencvlibrary/">OpenCV</a>
+    library to be successfully installed and tested with your
+    particular system and camera.
+    
+    <h3>Windows binary installer</h3>
+
+    Execute the downloaded MSI file.  Then, double-click on either the
+    HandVu_OpenCV icon or the HandVu icon on the desktop.  For
+    troubleshooting, see the <a
+    href="InstallationWindows.html">Windows Installation</a>
+    documentation.
+    
+    <h3>Source package</h3>
+
+    Please see the documentation for <a
+    href="InstallationLinux.html">Installation on Linux</a> or for <a
+    href="InstallationWindows.html">Installation on Windows</a>.
+
+    <a name="documentation">
+    <h2>Documentation</h2>
+
+    <ul>
+      <li>
+        The <a href="ApplicationDocumentation.html">Application
+        Documentation</a> explains how to interact with HandVu and how
+        to use the sample applications that come with the library.
+
+      <li>
+        The <a href="HandVuAPI.html">API Documentation</a> details the
+        function calls that comprise the HandVu library's API.
+    </ul>
+
+    <p>
+    
+  </body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>HandVu Installation on Windows</title>
+
+    <style type="text/css">
+      body
+      {color: black;
+       font-family: sans-serif;
+       font-weight: normal
+      }
+      h1
+      {color: black
+      }
+      A:link, A:visited
+      {text-decoration: none;
+       color: blue;
+      }
+      A:hover { background: yellow }
+    </style>
+
+</head>
+
+  <body>
+    <table width="100%" bgcolor="black">
+        <tr><td rowspan="3" width="120" align="center" valign="top">
+            <img border="0" width="80" src="HandVu_Icon_green.jpg">
+            </img>
+            
+          </td><td align="right">
+            <b><font color="yellow">the</font></b>
+          </td>
+        </tr><tr><td><td align="left">
+            <h1><font color="yellow">HandVu</font></h1>
+          </td>
+        </tr><tr><td colspan="2">
+            <b><font color="yellow">vision-based hand gesture interface</font></b>
+        </tr>
+    </table>
+
+    <b>
+    <a href="http://www.cs.ucsb.edu/~matz/HGI/HandVu.html">homepage</a> |
+    <a href="index.html">index</a> |
+    <a href="#requirements">requirements</a> |
+    <a href="#binary">binary</a> |
+    <a href="#source">source</a>
+    </b>
+
+    <a name="overview">
+    <h2>Installation on Windows</h2>
+
+    This page explains how to install the binary and source
+    distribution on a Windows platform.  For cygwin on Windows, please
+    use the <a href="InstallationLinux.html">Installation on
+    Linux</a>.
+
+    <a name="requirements">
+    <h3>Requirements</h3>
+    
+    <ul>
+      <li>Windows 2000/XP
+        
+      <li>a 1.5 GHz or faster CPU (performance increases superlinearly
+      with a faster CPU)
+        
+      <li><a
+      href="http://sourceforge.net/projects/opencvlibrary/">OpenCV</a>
+
+      <li>a camera with 320x240 or greater resolution; either
+      firewire, USB, or other frame grabber, that either works with
+      the OpenCV demos or has a DirectShow source filter (most
+      FireWire and USB cameras have this).  Support for libdc1394 is
+      in the making.
+        
+      <li>Microsoft's DirectX SDK, if you want to build the HandVu
+      DirectShow filter from source.
+        
+    </ul>
+
+
+    <a name="binary">
+    <h3>Binary package</h3>
+    
+    <ol>
+      <li>Execute the downloaded MSI file.  If an error occurs, exit
+      the installation.  If not, the installation has succeeded.
+
+      <li>In case of failure, use the DllTester.exe (downdload from
+      the homepage and run in a console) to check whether the DLLs are
+      in the search path.  cv, cxcore, cvaux, and highgui are
+      absolutely necessary.
+
+      <li>Install with the MSI file again.  If an error occurs still,
+      continue and finish the installation regardless.
+
+      <li>Open a console, cd to the application directory (C:\Program
+      Files\HandVu_*) and execute "regsvr32.exe HandVuFilter.ax".  If
+      that fails, you'll have to compile the source package.
+      Otherwise, the installation has completed.
+
+    </ol>
+
+    <a name="source">
+    <h3>Source package</h3>
+
+    <ol>
+      <li>Get all the <a href="#requirements">required packages</a>,
+      including the DirectX SDK.  Make sure their dlls are in the
+      search path on Windows.
+
+      <li>Create environment variables for the paths of the following
+      headers and library (.lib) files.  Either right-click on My
+      Computer, Properties, Advanced, Environment Variables, System
+      Variables.  Or add them to autoexec.bat.
+
+        <ul>
+          <li>OpenCV include paths: INC_OPENCV, INC_OPENCV_CXCORE,
+          INC_OPENCV_AUX, INC_OPENCV_HIGHGUI
+
+          <li>OpenCV library path: LIB_OPENCV
+            
+          <li>DirectShow Baseclasses include path: INC_DX_BASECLASSES
+            
+          <li>DirectShow Baseclasses path to debug and release
+            library: LIB_DX_BASECLASSES_DEBUG, LIB_DX_BASECLASSES_RELEASE
+            
+        </ul>
+        
+      <li>Unpack the archive into a directory of your choice.  First,
+      compile and build the "cubicles" library.  Next, compile and
+      build the HandVu library.  Lastly, build the application
+      programs.  There are Visual Studio project files for all of the
+      above.
+        
+      <li>For the DXApp to run, you must <i>register</i> the DXFilter
+      COM module first, using regsvr32.exe.  Go to the directory in
+      which the HandVuFilter.ax file resides, and call "regsvr32.exe
+      HandVuFilter.ax".
+
+      <li>If you get an error message during filter registration, make
+      sure you have the required libraries in the search path.  That's
+      the dll's to those libraries, not the lib files.  You can test
+      this with the DllTester.exe.
+
+      <li>If the DllTester.exe does not report any errors, but the
+      filter still won't register, I would very much appreciate if you
+      could run the <a
+      href="http://www.dependencywalker.com/">Dependency Walker</a>
+      tool on the HandVuFilter.ax file and tell me (matz) which
+      libraries are not found and/or which symbols can not be
+      resolved!  Thanks so much!
+
+      <li> The DXApp requires an argument to be set:
+      -c=fname.conductor, the file name of a HandVu configuration
+      file.
+        
+      <li>The OpenCV-based capture application (hv_OpenCV) requires at
+      least one argument, the conductor file (without -c=).
+
+      <li>In the highly unlikely case that you want to uninstall
+      HandVu Windows, go to the Control Panel, Add/Remove Programs and
+      remove it from there, or simply execute the MSI installer again.
+
+    </ol>
+
+    <p>
+    
+  </body>
+</html>
