@@ -25,7 +25,12 @@
 #include "FileHandling.h"
 #include "Exceptions.h"
 #include <errno.h>
-
+#include <limits.h>
+#include <stdio.h>
+#include <cstring>
+#include <stdlib.h>
+#include <string.h>
+#include <alloca.h>
 #ifdef USE_MFC
 #ifdef _DEBUG
 #define new DEBUG_NEW

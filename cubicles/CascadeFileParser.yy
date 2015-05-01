@@ -64,6 +64,7 @@
 #include "Classifiers.h"
 #include "IntegralFeatures.h"
 #include "Exceptions.h"
+#include <string.h>
 //#include <stdio.h>
 
 // internal variables:

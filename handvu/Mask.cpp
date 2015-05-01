@@ -25,7 +25,12 @@
 #include "Mask.h"
 #include "Exceptions.h"
 #include <fstream>
-
+#include <limits.h>
+#include <stdio.h>
+#include <cstring>
+#include <stdlib.h>
+#include <string.h>
+#include <alloca.h>
 Mask::Mask()
 : m_width(-1),
   m_height(-1),

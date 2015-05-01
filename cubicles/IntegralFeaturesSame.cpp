@@ -69,6 +69,12 @@
 #include "IntegralFeatures.h"
 #include "Exceptions.h"
 #include <iostream>
+#include <limits.h>
+#include <stdio.h>
+#include <cstring>
+#include <stdlib.h>
+#include <string.h>
+#include <alloca.h>
 
 
 

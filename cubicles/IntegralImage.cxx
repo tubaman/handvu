@@ -66,6 +66,8 @@
 
 #include <math.h>
 #include <ostream>
+#include <stdio.h>
+#include <string.h>
 
 #ifdef USE_MFC
 #ifdef _DEBUG
