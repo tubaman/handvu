@@ -175,6 +175,7 @@ int main( int argc, char** argv )
   hvInitialize(size.width, size.height);
   hvLoadConductor(conductor_fname);
   hvStartRecognition();
+  hvStartGestureServer(7045);
   hvSetOverlayLevel(2);
   if (async_processing) {
     hvAsyncSetup(num_async_bufs, displayCallback);
