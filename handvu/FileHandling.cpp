@@ -140,8 +140,8 @@ void _splitpath(const char* path, char* drive, char* dir, char* fname, char* ext
   fname[0] = 0;
   ext[0] = 0;
   
-  char* slashpos = strrchr(path, '/');
-  char* dotpos = strrchr(path, '.');
+  const char* slashpos = strrchr(path, '/');
+  const char* dotpos = strrchr(path, '.');
   
   if (slashpos==NULL) {
     if (dotpos==NULL) {

@@ -25,6 +25,7 @@
 #define __OPTICAL_FLOW_H__INCLUDED_
 
 #include <cv.h>
+#include <cvaux.h>
 #include <vector>
 using namespace std;
 
